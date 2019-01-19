@@ -50,18 +50,18 @@ public class Player : MonoBehaviour
 
 	public void FixedUpdate()
 	{
+		var move = Input.GetAxis("Horizontal");
+
+		_rigidBody2D.velocity = new Vector2(move * MoveSpeed, _rigidBody2D.velocity.y);
+
+		if ((move > 0 && _spriteRenderer.flipX) || (move < 0 && !_spriteRenderer.flipX)) FlipCharacter();
+
 		if (_isJumping)
 		{
 			_rigidBody2D.AddForce(new Vector2(0, JumpForce));
 
 			_isJumping = false;
 		}
-
-		var move = Input.GetAxis("Horizontal");
-
-		_rigidBody2D.velocity = new Vector2(move * MoveSpeed, _rigidBody2D.velocity.y);
-
-		if ((move > 0 && _spriteRenderer.flipX) || (move < 0 && !_spriteRenderer.flipX)) FlipCharacter();
 	}
 
 	public void FlipCharacter() => _spriteRenderer.flipX = !_spriteRenderer.flipX;
