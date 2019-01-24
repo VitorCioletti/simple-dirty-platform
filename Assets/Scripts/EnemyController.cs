@@ -2,33 +2,34 @@
 
 public class EnemyController : MonoBehaviour
 {
-
-	public int Health;
+	public int DistanceAttack;
 
 	public int Speed;
+
+	protected int Health;
+
+	protected bool IsMoving;
 
 	protected Rigidbody2D Rigidbody2D;
 
 	protected Animator Animator;
 
-	protected bool IsMoving;
-
 	protected Transform Player;
+
+	protected SpriteRenderer SpriteRenderer;
 
 	void Awake()
 	{
 		Rigidbody2D = GetComponent<Rigidbody2D>();
 		Animator = GetComponent<Animator>();
+		SpriteRenderer = GetComponent<SpriteRenderer>();
+
 		Player = GameObject.Find("Player").GetComponent<Transform>();
 	}
 
-	void Start()
-    {
-        
-    }
+	protected float GetPlayerDistance() => Vector2.Distance(Player.position, transform.position);
 
-    void Update()
-    {
-        
-    }
+	protected void FlipCharacter() => SpriteRenderer.flipX = !SpriteRenderer.flipX;
+
+	protected void InvertSpeed() => Speed *= -1;
 }

@@ -20,11 +20,6 @@ public class Player : MonoBehaviour
 
 	private bool _flipAxis;
 
-	void Start()
-	{
-
-	}
-
 	private void Awake()
 	{
 		_rigidBody2D = GetComponent<Rigidbody2D>();
