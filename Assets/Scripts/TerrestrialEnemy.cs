@@ -19,8 +19,6 @@ public class TerrestrialEnemy : EnemyController
 				InvertSpeed();
 			}
 		}
-
-		Debug.Log(distance);
     }
 
 	private void FixedUpdate() => Rigidbody2D.velocity = new Vector2(IsMoving ? Speed : 0, Rigidbody2D.velocity.y);
